@@ -37,7 +37,7 @@ class HomeVC: UIViewController {
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
             tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
         
         contactViewModel.fetchContacts { [weak self] contacts,error  in
@@ -88,6 +88,8 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.show(DetailVC(self.contactViewModel.contacts[indexPath.section]), sender: nil)
+        let contact = self.contactViewModel.contacts[indexPath.section]
+        let image = self.contactViewModel.contactImages[contact.name]
+        self.show(DetailVC(contact, image), sender: nil)
     }
 }

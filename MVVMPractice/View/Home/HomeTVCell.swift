@@ -17,6 +17,7 @@ class HomeTVCell: UITableViewCell {
             setupData()
         }
     }
+    
     var img: UIImage? {
         didSet {
             let imageView = UIImageView(image: img)
@@ -41,6 +42,7 @@ class HomeTVCell: UITableViewCell {
         self.layer.cornerRadius = 10
         self.textLabel?.textColor = .white
         self.clipsToBounds = true
+        self.selectionStyle = .none
     }
     
     func setupData() {
