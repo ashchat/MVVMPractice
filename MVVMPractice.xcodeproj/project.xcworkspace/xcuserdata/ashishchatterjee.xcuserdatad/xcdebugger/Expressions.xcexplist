@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "closure #1 in HTTPManager.downloadImage(urlString:completionBlock:):HTTPManager.swift">
+      </ContextState>
+      <ContextState
+         contextName = "HomeTVCell.setupUI():HomeTVCell.swift">
+      </ContextState>
+      <ContextState
+         contextName = "HomeViewModel.fetchImages(completion:):HomeViewModel.swift">
+      </ContextState>
+      <ContextState
+         contextName = "HomeVC.tableView(_:cellForRowAt:):HomeVC.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in HomeViewModel.fetchContacts(completion:):HomeViewModel.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in HomeVC.initUI():HomeVC.swift">
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

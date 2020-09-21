@@ -16,6 +16,11 @@
 		C3F1217E2517532600FF5C0E /* MVVMPracticeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F1217D2517532600FF5C0E /* MVVMPracticeUITests.swift */; };
 		C3F1218F25176A0800FF5C0E /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F1218E25176A0800FF5C0E /* HomeVC.swift */; };
 		C3F121922517F95600FF5C0E /* HTTPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F121912517F95600FF5C0E /* HTTPManager.swift */; };
+		C3F121972518358200FF5C0E /* ContactViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F121962518358200FF5C0E /* ContactViewModel.swift */; };
+		C3F121992518E19A00FF5C0E /* HomeTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F121982518E19A00FF5C0E /* HomeTVCell.swift */; };
+		C3F1219B2518E45B00FF5C0E /* ContactModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F1219A2518E45B00FF5C0E /* ContactModel.swift */; };
+		C3F1219E2518E4B900FF5C0E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F1219D2518E4B900FF5C0E /* Constants.swift */; };
+		C3F121A225190B1000FF5C0E /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F121A125190B1000FF5C0E /* DetailVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +56,11 @@
 		C3F1217F2517532600FF5C0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C3F1218E25176A0800FF5C0E /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		C3F121912517F95600FF5C0E /* HTTPManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPManager.swift; sourceTree = "<group>"; };
+		C3F121962518358200FF5C0E /* ContactViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewModel.swift; sourceTree = "<group>"; };
+		C3F121982518E19A00FF5C0E /* HomeTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTVCell.swift; sourceTree = "<group>"; };
+		C3F1219A2518E45B00FF5C0E /* ContactModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactModel.swift; sourceTree = "<group>"; };
+		C3F1219D2518E4B900FF5C0E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		C3F121A125190B1000FF5C0E /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,10 +113,11 @@
 			children = (
 				C3F121582517532300FF5C0E /* AppDelegate.swift */,
 				C3F1215A2517532300FF5C0E /* SceneDelegate.swift */,
-				C3F121902517F93F00FF5C0E /* Network */,
 				C3F1218B251769D700FF5C0E /* Model */,
 				C3F1218C251769DE00FF5C0E /* View */,
 				C3F1218D251769E100FF5C0E /* ViewModel */,
+				C3F1219C2518E4B000FF5C0E /* Constants */,
+				C3F121902517F93F00FF5C0E /* Network */,
 				C3F121642517532600FF5C0E /* Assets.xcassets */,
 				C3F121662517532600FF5C0E /* LaunchScreen.storyboard */,
 				C3F121692517532600FF5C0E /* Info.plist */,
@@ -136,6 +147,7 @@
 		C3F1218B251769D700FF5C0E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C3F1219A2518E45B00FF5C0E /* ContactModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -143,7 +155,8 @@
 		C3F1218C251769DE00FF5C0E /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C3F1218E25176A0800FF5C0E /* HomeVC.swift */,
+				C3F1219F25190AF000FF5C0E /* Home */,
+				C3F121A025190AF900FF5C0E /* Detail */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -151,6 +164,7 @@
 		C3F1218D251769E100FF5C0E /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				C3F121962518358200FF5C0E /* ContactViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -161,6 +175,31 @@
 				C3F121912517F95600FF5C0E /* HTTPManager.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		C3F1219C2518E4B000FF5C0E /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				C3F1219D2518E4B900FF5C0E /* Constants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		C3F1219F25190AF000FF5C0E /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				C3F1218E25176A0800FF5C0E /* HomeVC.swift */,
+				C3F121982518E19A00FF5C0E /* HomeTVCell.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		C3F121A025190AF900FF5C0E /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				C3F121A125190B1000FF5C0E /* DetailVC.swift */,
+			);
+			path = Detail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -295,8 +334,13 @@
 			files = (
 				C3F121922517F95600FF5C0E /* HTTPManager.swift in Sources */,
 				C3F121592517532300FF5C0E /* AppDelegate.swift in Sources */,
+				C3F1219B2518E45B00FF5C0E /* ContactModel.swift in Sources */,
+				C3F121972518358200FF5C0E /* ContactViewModel.swift in Sources */,
 				C3F1218F25176A0800FF5C0E /* HomeVC.swift in Sources */,
+				C3F121A225190B1000FF5C0E /* DetailVC.swift in Sources */,
+				C3F1219E2518E4B900FF5C0E /* Constants.swift in Sources */,
 				C3F121632517532300FF5C0E /* MVVMPractice.xcdatamodeld in Sources */,
+				C3F121992518E19A00FF5C0E /* HomeTVCell.swift in Sources */,
 				C3F1215B2517532300FF5C0E /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

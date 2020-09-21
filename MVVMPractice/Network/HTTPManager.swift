@@ -41,27 +41,27 @@ class HTTPManager {
         task.resume()
     }
     
-    public func downloadImage(urlString: String, completionBlock: @escaping (Result<UIImage, Error>) -> Void) {
+    public func downloadImage(urlString: String, completionBlock: @escaping (UIImage?,Error?) -> Void) {
         guard let url = URL(string: urlString) else {
-            completionBlock(.failure(HTTPError.invalidURL))
+            completionBlock(nil,HTTPError.invalidURL)
             return
         }
         
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard error == nil else {
-                completionBlock(.failure(error!))
+                completionBlock(nil,error)
                 return
             }
             
             guard   let responseData = data,
                     let httpResponse = response as? HTTPURLResponse,
                     200 ..< 300 ~= httpResponse.statusCode else {
-                        completionBlock(.failure(HTTPError.invalidResponse(data, response)))
+                        completionBlock(nil,HTTPError.invalidResponse(data, response))
                         return
             }
             
             if let image = UIImage(data: responseData) {
-                completionBlock(.success(image))
+                completionBlock(image,nil)
                 return
             }
         }
