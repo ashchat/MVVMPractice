@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HTTPManager {
+class HTTPManager: Identifiable {
     static let shared: HTTPManager = HTTPManager()
     
     enum HTTPError: Error {
