@@ -8,38 +8,49 @@
 
 import UIKit
 
+protocol ContactsDelegate {
+    func updateSection(_ indexSet: IndexSet)
+}
+
 class ContactViewModel {
     
+    let httpManager: HTTPManager
     var contacts = [ContactModel]()
     var contactImages = [String:UIImage]()
+    var delegate: ContactsDelegate?
+    
+    init(httpManager: HTTPManager = .shared) {
+        self.httpManager = httpManager
+    }
 
-    func fetchContacts(completion: @escaping ([ContactModel]?,Error?) -> Void) {
-        HTTPManager.shared.get(urlString: contactsURL) { [weak self] result in
+    func fetchContacts(completion: @escaping (Error?) -> Void) {
+        httpManager.get(urlString: contactsURL) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .failure(let error):
-                print("failure", error)
+                completion(error)
             case .success(let data):
-                let decoder = JSONDecoder()
                 do {
-                    self.contacts = try decoder.decode([ContactModel].self, from: data)
-                    completion(self.contacts,nil)
+                    self.contacts = try JSONDecoder().decode([ContactModel].self, from: data)
+                    completion(nil)
+                    self.fetchImages()
                 } catch {
-                    print("Error while decoding JSON from data")
+                    completion(error)
                 }
             }
         }
     }
     
-    func fetchImages(completion: @escaping ([String:UIImage]?,Error?) -> Void) {
-        for contact in self.contacts {
-            HTTPManager.shared.downloadImage(urlString: contact.imageURL) { imgResult,error  in
-                if let img = imgResult {
-                    self.contactImages[contact.name] = img
+    func fetchImages() {
+        for (index, contact) in self.contacts.enumerated() {
+            httpManager.downloadImage(urlString: contact.imageURL, completionBlock: { [weak self] image, error in
+                guard let self = self else { return }
+                self.contactImages[contact.imageURL] = image
+                DispatchQueue.main.async {
+                    self.delegate?.updateSection(IndexSet(integer: index))
                 }
-            }
+            })
         }
-        completion(self.contactImages,nil)
     }
     
 }

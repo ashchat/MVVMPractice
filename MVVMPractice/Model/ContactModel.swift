@@ -14,6 +14,7 @@ struct ContactModel: Codable, Hashable {
     let number: Int
     let team: String
     let imageURL: String
+    // let imageData: Data
     
     private enum CodingKeys: String, CodingKey {
         case name

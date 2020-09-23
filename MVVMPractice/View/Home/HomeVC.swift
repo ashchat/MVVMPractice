@@ -17,6 +17,7 @@ class HomeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        contactViewModel.delegate = self
         initUI()
     }
     
@@ -40,7 +41,11 @@ class HomeVC: UIViewController {
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
         
-        contactViewModel.fetchContacts { [weak self] contacts,error  in
+        contactViewModel.fetchContacts { [weak self] error in
+            guard error == nil else {
+                // do something with error
+                return
+            }
             DispatchQueue.main.async {
                 self?.tableView.reloadData()
             }
@@ -73,23 +78,22 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: HomeTVCell.reuseIdentifier, for: indexPath) as! HomeTVCell
-        cell.model = contactViewModel.contacts[indexPath.section]
-        
-        // MARK: WHERE TO MAKE THIS CALL IN MVVM PROPERLY?
-        HTTPManager.shared.downloadImage(urlString: cell.model.imageURL) { (image, error) in
-            if let img = image {
-                DispatchQueue.main.async {
-                    self.contactViewModel.contactImages[cell.model.name] = img
-                    cell.img = img
-                }
-            }
-        }
+        let model = contactViewModel.contacts[indexPath.section]
+        cell.model = model
+        cell.img = contactViewModel.contactImages[model.imageURL]
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let contact = self.contactViewModel.contacts[indexPath.section]
-        let image = self.contactViewModel.contactImages[contact.name]
+        let image = self.contactViewModel.contactImages[contact.imageURL]
         self.show(DetailVC(contact, image), sender: nil)
     }
+}
+
+extension HomeVC: ContactsDelegate {
+    func updateSection(_ indexSet: IndexSet) {
+        tableView.reloadSections(indexSet, with: .none)
+    }
+
 }
